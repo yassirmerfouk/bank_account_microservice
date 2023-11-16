@@ -47,20 +47,29 @@ type BankAccount{
     customer : Customer
 }
 
+type Customer{
+    id : ID,
+    fullName : String,
+    bankAccounts : [BankAccount]
+}
+
 input BankAccountInput{
     id : ID,
     createdAt : String,
     balance : Float,
     currency : String,
     type : BankAccountType
+    customer : CustomerInput
+}
+
+input CustomerInput{
+    id : ID,
+    fullName : String,
+    bankAccounts : [BankAccountInput]
 }
 
 enum BankAccountType{
     CURRENT_ACCOUNT, SAVING_ACCOUNT
 }
 
-type Customer{
-    id : ID,
-    fullName : String,
-    bankAccounts : [BankAccount]
-}
+
